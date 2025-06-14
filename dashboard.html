@@ -1,0 +1,33 @@
+<div class="dashboard-container">
+    <h2>Student's Dashboard</h2>
+    <div class="header">
+        <h3>Welcome, {{currentUser.role}} : {{currentUser.username}}</h3>
+        <button ng-click="logout()">Logout</button>
+    </div>
+
+    <div ng-if="currentUser.role === 'admin'" class="add">
+        <h4>Add Student</h4>
+        <hr>
+        <hr>
+        <form action="" ng-submit="addStudent()">
+            <label for="name">Name</label>
+            <input ng-model="newStudent.name" placeholder="Name" required/>
+            <label for="rollNumber">Roll Number</label>
+            <input ng-model="newStudent.rollNumber" placeholder="Roll Number" required/>
+            <label for="department">Department</label>
+            <input ng-model="newStudent.department" placeholder="Department" required/>
+            <button type="submit">Add</button>
+        </form>
+    </div>
+    <div ng-if="currentUser.role === 'user'" class="view">
+        <div class="dashboard-message" ng-if="currentUser.role === 'user'">
+            <p>Welcome to the Student Dashboard!</p>
+            <p>You can view all registered students here.</p>
+            <p>This list includes names, roll numbers, and departments.</p>
+            <p>If you need to make changes, please contact an <strong>admin</strong>.</p>
+            <p>Enjoy browsing the student directory!</p>
+        </div>
+
+    </div>
+    <p class="view-student-list">View Student List <a href="#!/student-list">here</a></p>
+</div>

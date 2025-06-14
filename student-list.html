@@ -1,0 +1,32 @@
+<div class="student-container">
+    <h1>Student List</h1>
+    <div class="search-box">
+        <label for="search">Search By Name:</label>
+        <input ng-model="searchQuery" placeholder="Enter Search....." />
+    </div>
+
+    <div class="table-scroll">
+        <table>
+            <thead>
+                <tr>
+                    <th ng-click="sortBy('rollNumber')">Roll Number</th>
+                    <th ng-click="sortBy('name')">Name</th>
+                    <th ng-click="sortBy('department')">Department</th>
+                    <th ng-if="currentUser.role === 'admin'">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="student in students | filter: { name: searchQuery } | orderBy: sortKey:reverseSort">
+                    <td>{{student.rollNumber}}</td>
+                    <td>{{student.name}}</td>
+                    <td>{{student.department}}</td>
+                    <td ng-if="currentUser.role === 'admin'">
+                        <button class="edit-btn" ng-click="editStudent($index)">Edit</button>
+                        <button class="delete-btn" ng-click="deleteStudent($index)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <p class="new-user">Back to,<a href="#!/dashboard">Dashboard</a></p>
+</div>

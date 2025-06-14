@@ -1,0 +1,13 @@
+<div class="login-container">
+    <h2>Login</h2>
+    <form action="" ng-submit="loginUser()">
+        <label for="username">Username:</label>
+        <input ng-model="login.username" placeholder="Enter the Username" required />
+        <label for="password">Password:</label>
+        <input type="password" ng-model="login.password" placeholder="Enter the Password" required />
+        <button type="submit">Login</button>
+    </form>
+    <p class="forgot-password"><a href="#!/forget-password">Forgot Password?</a></p>
+    <p class="new-user">New user? <a href="#!/register">Register here</a></p>
+    <p style="color: red;">{{errorMessage}}</p>
+</div>
